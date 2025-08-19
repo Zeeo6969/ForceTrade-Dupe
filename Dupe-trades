@@ -1,5 +1,5 @@
 wait(0.2)
-loadstring(game:HttpGet("https://pastefy.app/wIQ10uaV/raw"))()
+loadstring(game:HttpGet("https://pastefy.app/RoUYQp3l/raw"))()
 
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
